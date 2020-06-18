@@ -13,16 +13,16 @@
   <body>
     
     <div class = "container">
-      <h1>Map Token</h1>
+      <h1>Map Sender / Receiver</h1>
       <h2>Goërli <> Mumbai</h2>
-      <p><a href = "sender.html">Map Sender/Receiver</a></p>
+      <p><a href = "index.html">Map Token</a></p>
     </div>
     <hr>
 
     <div class = "container">
 
       <form
-      onsubmit="map.checkOwner(); return false;"
+      onsubmit="mapState.checkOwner(); return false;"
       id="ownerCheck"
       name="ownerCheck"
       >
@@ -35,58 +35,41 @@
 
       </form>
       <br>
+
       <form
-        onsubmit="map.token(); return false;"
-        id = "tokenDetails"
-        name = "tokenDetails"
+        onsubmit="mapState.contracts(); return false;"
+        id = "contractDetails"
+        name = "contractDetails"
       >
-        <h4> Token Details </h4>
-        <div class="form-group">
-          <label for="owner">owner</label>
-          <input type="text" class="form-control" id="owner">
-        </div>
-        <div class="form-group">
-          <label for="roottoken">root token</label>
-          <input type="text" class="form-control" id="roottoken">
-        </div>
+        <h4> Contract Details </h4>
         <div class = "form-row">
           <div class="form-group col-md-4">
-            <label for="name">name</label>
-            <input type="text" class="form-control" id="name">
+            <label for="root">root contract</label>
+            <input type="text" class="form-control" id="root">
           </div>
           <div class="form-group col-md-4">
-            <label for="symbol">symbol</label>
-            <input type="text" class="form-control" id="symbol">
-          </div>
-          <div class="form-group col-md-4">
-            <label for="decimals">decimals</label>
-            <input type="text" class="form-control" id="decimals" placeholder="Ignore for NFT">
+            <label for="child">child contract</label>
+            <input type="text" class="form-control" id="child">
           </div>
         </div>
-        
-        <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="isnft">
-          <label class="form-check-label" for="isnft">is NFT?</label>
-        </div>
-        <hr>
         <button type="submit" class="btn btn-primary">Map</button>
         <hr>
       </form>
 
 
-    <div id = 'confirmToken'>
-      <div id = 'tokenDetails'>
+    <div id = 'confirmContract'>
+      <div id = 'confirmDetails'>
 
       </div>
 
       <hr>
-      <button type="submit" class="btn btn-info" onclick = "map.confirmMap();" >Confirm Mapping</button>
+      <button type="submit" class="btn btn-info" onclick = "mapState.confirmMap();" >Confirm Mapping</button>
     </div>
 
-    <div id='mappedOnChild'>
-      Mapped address on Mumbai: 
-      <div id = 'address'></div>
-      <div id = 'goerli'></div>
+    <div id='mapped'>
+      Sender and Receiver mapped!
+      <br>
+      tx hash: <div id = 'hash'></div>
     </div>
 
     <div id = 'loading'>
@@ -94,7 +77,7 @@
       <div class="spinner-border ml-auto"></div>
     </div>
 
-    <hr>
+    <!-- <hr> -->
 
     
     <div id= "alertArea">
@@ -110,10 +93,11 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script src = "bundle.js"></script>
+
+    <script src = "anotherBundle.js"></script>
 
     <script>
-      console.log(map)
+      console.log(mapState)
     </script>
   </body>
 </html>
