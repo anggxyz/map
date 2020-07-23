@@ -1,0 +1,19 @@
+{
+  "name": "map-tokens",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bip39": "^3.0.2",
+    "browserify": "^16.5.1",
+    "ethereumjs-wallet": "^0.6.3",
+    "http-server": "^0.12.3",
+    "web3": "^1.2.9"
+  }
+}
