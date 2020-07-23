@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Mapping Tokens</title>
+  </head>
+  <body>
+    
+    <div class = "container">
+      <h1>Mapping Tokens</h1>
+      <!-- <h2>Goërli <> Mumbai</h2> -->
+      <!-- <p><a href = "index.html">Map Token</a></p> -->
+    </div>
+    <hr>
+
+    <div class = "container">
+    <div id = "connect">
+      <button 
+        type="submit" 
+        class="btn btn-primary"
+        onclick="metamask.init();"
+      > Connect Metamask </button>
+    </div>
+    <form
+      onsubmit="metamask.getDetails(); return false;"
+      id = "tokenDetails"
+      name = "tokenDetails"
+    >
+      <h4> Token Details </h4>
+      <div class="form-group">
+        <label for="owner">owner</label>
+        <input type="text" class="form-control" id="owner">
+      </div>
+      <div class="form-group">
+        <label for="roottoken">root token</label>
+        <input type="text" class="form-control" id="roottoken">
+      </div>
+      <div class = "form-row">
+        <div class="form-group col-md-4">
+          <label for="name">name</label>
+          <input type="text" class="form-control" id="name">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="symbol">symbol</label>
+          <input type="text" class="form-control" id="symbol">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="decimals">decimals</label>
+          <input type="text" class="form-control" id="decimals" placeholder="Ignore for NFT">
+        </div>
+      </div>
+      
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="isnft">
+        <label class="form-check-label" for="isnft">is NFT?</label>
+      </div>
+      <hr>
+      <button type="submit" class="btn btn-primary">Map</button>
+      <hr>
+    </form>
+    
+    <div id = 'confirmToken'>
+      <div id = 'confirmTokenDetails'>
+
+      </div>
+
+      <hr>
+      <button type="submit" class="btn btn-info" onclick = "metamask.map();" >Confirm Mapping</button>
+    </div>
+
+    <div id = 'confirmOnRoot'>
+      <div id='mappedAddressOnChild'>
+        <!--button to get mapped address-->
+      </div>
+      <div id='buttonToConfirmOnRoot'>
+        <!--button to confirm on root-->
+        <button type="submit" class="btn btn-info" onclick = "metamask.confirmOnRoot();" >
+          Confirm Mapping on Root
+        </button>
+      </div>
+    </div>
+      
+    <div id = 'msg'></div>
+    <div id = 'loading'>
+      <strong>Awaiting confirmation <span id = "awaitingOn"></span>... </strong>
+      <div class="spinner-border ml-auto"></div>
+    </div>
+    
+    <div id="newMapping">
+      
+      <hr />
+      <button type="submit" class="btn btn-warning" onclick = "window.location.reload();" >
+        New Mapping?
+      </button>
+    <div>
+
+    </div>
+
+    <!-- <hr> -->
+
+    
+    <div id= "alertArea">
+         <!-- for red alerts -->
+    </div>
+
+    </div>
+
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <script src = "metamask-bundle.js"></script>
+
+    <script>
+      // console.log(mapState)
+    </script>
+  </body>
+</html>
