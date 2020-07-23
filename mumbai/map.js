@@ -35,5 +35,5 @@ module.exports = {
   walletMain: walletMain,
   stateSender: StateSender,
   web3: web3,
-  child_owner: '0x907f2e1f4a477319a700fc9a28374ba47527050e'
+  owner: '0x907f2e1f4a477319a700fc9a28374ba47527050e'
 }

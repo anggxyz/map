@@ -1,4 +1,4 @@
-const { governance, registry, childchain, child_owner, web3} = require('./map')
+const { governance, registry, childchain, owner, web3} = require('./map')
 let alertArea = document.getElementById('alertArea')
 let awaitingOn = document.getElementById('awaitingOn')
 let msg = document.getElementById('msg')
@@ -11,11 +11,11 @@ function changeVisibility (elements, bool) {
     visibility = 'none'
   }
   for (el in elements) {
-    console.log (elements[el])
     document.getElementById(elements[el]).style.display = visibility
   }
 }
 changeVisibility(elements, false)
+changeVisibility(['alertArea'], true)
 
 let accounts, mappedAddress
 let token_owner, root, name, symbol, decimals, isNFT
@@ -24,7 +24,7 @@ async function init () {
     method: 'eth_requestAccounts',
     params: []
   })
-  if (accounts[0] == child_owner) {
+  if (accounts[0] == owner) {
     changeVisibility(['tokenDetails'], true)
     changeVisibility(['connect'], false)
   } else {
@@ -36,13 +36,30 @@ async function init () {
 async function getDetails() {
   let token = document.tokenDetails
   
-  token_owner = token.owner.value
-  root = token.roottoken.value
-  name  = token.name.value
-  symbol = token.symbol.value
-  decimals = token.decimals.value 
+  token_owner = token.owner.value.trim()
+  root = token.roottoken.value.trim()
+  name  = token.name.value.trim()
+  symbol = token.symbol.value.trim()
+  decimals = token.decimals.value.trim()
   isNFT = token.isnft.checked
   if (isNFT) decimals = '0'
+
+  // validations
+  // check is token_owner is valid address
+  if (!web3.utils.isAddress(token_owner)) {
+    alertArea.innerHTML = 'Error: Token owner not valid address'
+    return;
+  }
+  // check if root is valid address
+  if (!web3.utils.isAddress(root)) {
+    alertArea.innerHTML = 'Error: Root token is not valid address'
+    return;
+  }
+  // check if decimals is number
+  if (!Number.isInteger(parseInt(decimals))) {
+    alertArea.innerHTML = 'Error: Decimals is not a number'
+    return;
+  }
 
   changeVisibility(['tokenDetails'], false)
   changeVisibility(['confirmToken', 'confirmTokenDetails'], true)
